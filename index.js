@@ -6,19 +6,21 @@ formulario.addEventListener("submit", function(e){
     const fecha = document.getElementById("date").value;
 
     e.preventDefault(); //Evita no ejecutar el formulario
-    const newformData = {
-        Nombre : nombre,
+    const newformData = {   
+        Nombre : nombre,            //Creamos el nuevo formulario 
         Apellido : apellido,
         FechaNacimiento : fecha
     };
+
+    //Hacemos el fetch vinculando la API
 
     fetch("https://jsonplaceholder.typicode.com/users",{
         method: "POST",
         headers: {
             "Content-type" : "application/json"
         },
-        body: JSON.stringify(newformData)
-    })
+        body: JSON.stringify(newformData)       //Usamos el stringify para que el formulario convertirlo 
+    })                                         //En Cadena JSON
         .then((response) => response.json())
         .then((data) => {
             console.log(data);
